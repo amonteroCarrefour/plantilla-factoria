@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Petición de Demanda - Factoría de Calidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            color: #1a202c;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .required::after {
+            content: " *";
+            color: #e53e3e;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            background: #ebf8ff;
+            border: 1px solid #90cdf4;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+
+        .info-box strong {
+            color: #2c5282;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+            color: #2c5282;
+        }
+
+        .info-box ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .info-box ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .commitments-box {
+            background: #fffbeb;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .commitments-box h3 {
+            color: #92400e;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .commitments-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .commitments-box ul li {
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .commitments-box ul li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-size: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #4a5568;
+            border: 2px solid #cbd5e0;
+        }
+
+        .btn-secondary:hover {
+            background: #f7fafc;
+            border-color: #a0aec0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Plantilla de Petición de Demanda</h1>
+            <p>Factoría de Calidad</p>
+        </div>
+
+        <div class="content">
+            <form id="requestForm">
+                
+                <div class="section">
+                    <div class="section-header">
+                        <h2>1. Información General</h2>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="requestId">ID de Petición (opcional)</label>
+                            <input type="text" id="requestId" name="requestId" placeholder="Se generará automáticamente">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="requestDate" class="required">Fecha de Petición</label>
+                            <input type="date" id="requestDate" name="requestDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="requestor" class="required">Solicitante</label>
+                            <input type="text" id="requestor" name="requestor" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="department" class="required">Departamento</label>
+                            <input type="text" id="department" name="department" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project" class="required">Proyecto</label>
+                            <input type="text" id="project" name="project" placeholder="ej: APP Mobile, E-commerce" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority" class="required">Prioridad</label>
+                            <select id="priority" name="priority" required>
+                                <option value="Baja">Baja</option>
+                                <option value="Media" selected>Media</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Crítica">Crítica</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>2. Descripción de la Demanda</h2>
+                    </div>
+                    <div class="form-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <label for="demandType" class="required">Tipo de Demanda</label>
+                            <select id="demandType" name="demandType" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Testing Manual">Testing Manual</option>
+                                <option value="Automatización">Automatización de Pruebas</option>
+                                <option value="Testing de Integración">Testing de Integración</option>
+                                <option value="Testing de Rendimiento">Testing de Rendimiento</option>
+                                <option value="Testing de Regresión">Testing de Regresión</option>
+                                <option value="Análisis de Calidad">Análisis de Calidad</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="title" class="required">Título de la Demanda</label>
+                            <input type="text" id="title" name="title" placeholder="Título breve y descriptivo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description" class="required">Descripción Detallada</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Describe en detalle qué se necesita..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="objectives" class="required">Objetivos</label>
+                            <textarea id="objectives" name="objectives" rows="3" placeholder="¿Qué se espera conseguir con esta demanda?" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="scope" class="required">Alcance</label>
+                            <textarea id="scope" name="scope" rows="3" placeholder="Define qué está incluido y qué no..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>3. Detalles Técnicos</h2>
+                    </div>
+                    <div class="form-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <label for="affectedAreas" class="required">Áreas/Módulos Afectados</label>
+                            <input type="text" id="affectedAreas" name="affectedAreas" placeholder="ej: Login, Carrito, Checkout, API Pedidos" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Tipos de Testing Requeridos</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Automatizacion">
+                                    <span>Automatización</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Testing Funcional">
+                                    <span>Testing Funcional</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Regresión Manual">
+                                    <span>Regresión Manual</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Regresión Automatizada">
+                                    <span>Regresión Automatizada</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Integración">
+                                    <span>Integración</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Rendimiento">
+                                    <span>Rendimiento</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="testingType" value="Seguridad">
+                                    <span>Seguridad</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="environment" class="required">Entorno</label>
+                            <select id="environment" name="environment" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Desarrollo">Desarrollo</option>
+                                <option value="Integración">Integración</option>
+                                <option value="Pre-producción">Pre-producción</option>
+                                <option value="Producción">Producción</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="documentation">Documentación Adjunta</label>
+                            <input type="text" id="documentation" name="documentation" placeholder="Links a Confluence, Jira, Drive, etc.">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>4. Planificación</h2>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="expectedStartDate" class="required">Fecha Inicio Esperada</label>
+                            <input type="date" id="expectedStartDate" name="expectedStartDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectedEndDate">Fecha Fin Esperada</label>
+                            <input type="date" id="expectedEndDate" name="expectedEndDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deadline" class="required">Deadline</label>
+                            <input type="date" id="deadline" name="deadline" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>5. Aprobación y Presupuesto</h2>
+                    </div>
+                    <div class="form-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <label for="budgetOwner" class="required">Responsable de Presupuesto</label>
+                            <input type="text" id="budgetOwner" name="budgetOwner" placeholder="Persona que autorizará la demanda" required>
+                        </div>
+                        
+                        <div class="info-box">
+                            <strong>Nota:</strong> La estimación de esfuerzo será completada por la Factoría e incluirá:
+                            <ul>
+                                <li>Automatización (horas)</li>
+                                <li>Preparación de entorno (horas)</li>
+                                <li>Regresión Manual (horas)</li>
+                                <li>Regresión Automatizada (horas)</li>
+                                <li>Testing Funcional (horas)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>6. Observaciones y Comentarios</h2>
+                    </div>
+                    <div class="form-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <textarea id="comments" name="comments" rows="4" placeholder="Cualquier información adicional relevante..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="commitments-box">
+                        <h3>Compromisos</h3>
+                        <ul>
+                            <li>El solicitante se compromete a proporcionar la documentación necesaria</li>
+                            <li>El solicitante acepta los plazos estimados por la Factoría</li>
+                            <li>En caso de cancelación, se pagarán los trabajos realizados hasta la fecha</li>
+                            <li>La demanda no comenzará sin aprobación formal del responsable de presupuesto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-primary" onclick="exportTemplate()">Exportar Plantilla</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('requestDate').valueAsDate = new Date();
+
+        function getFormData() {
+            var form = document.getElementById('requestForm');
+            var formData = new FormData(form);
+            var data = {};
+            
+            for (var pair of formData.entries()) {
+                var key = pair[0];
+                var value = pair[1];
+                if (key === 'testingType') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            if (!data.testingType) data.testingType = [];
+            
+            return data;
+        }
+
+        function exportTemplate() {
+            var data = getFormData();
+            var today = new Date().toLocaleString('es-ES');
+            
+            var template = 'PLANTILLA DE PETICIÓN DE DEMANDA - FACTORÍA DE CALIDAD\n';
+            template += '========================================================\n\n';
+            template += '1. INFORMACIÓN GENERAL\n';
+            template += '----------------------\n';
+            template += 'ID de Petición: ' + (data.requestId || '[Auto-generado]') + '\n';
+            template += 'Fecha de Petición: ' + (data.requestDate || '') + '\n';
+            template += 'Solicitante: ' + (data.requestor || '') + '\n';
+            template += 'Departamento: ' + (data.department || '') + '\n';
+            template += 'Proyecto: ' + (data.project || '') + '\n';
+            template += 'Prioridad: ' + (data.priority || '') + '\n\n';
+            template += '2. DESCRIPCIÓN DE LA DEMANDA\n';
+            template += '-----------------------------\n';
+            template += 'Tipo de Demanda: ' + (data.demandType || '') + '\n';
+            template += 'Título: ' + (data.title || '') + '\n\n';
+            template += 'Descripción:\n' + (data.description || '') + '\n\n';
+            template += 'Objetivos:\n' + (data.objectives || '') + '\n\n';
+            template += 'Alcance:\n' + (data.scope || '') + '\n\n';
+            template += '3. DETALLES TÉCNICOS\n';
+            template += '--------------------\n';
+            template += 'Áreas Afectadas: ' + (data.affectedAreas || '') + '\n';
+            template += 'Tipos de Testing: ' + (data.testingType.join(', ') || 'No especificado') + '\n';
+            template += 'Entorno: ' + (data.environment || '') + '\n';
+            template += 'Documentación Adjunta: ' + (data.documentation || '') + '\n\n';
+            template += '4. PLANIFICACIÓN\n';
+            template += '----------------\n';
+            template += 'Fecha Inicio Esperada: ' + (data.expectedStartDate || '') + '\n';
+            template += 'Fecha Fin Esperada: ' + (data.expectedEndDate || '') + '\n';
+            template += 'Fecha Límite (Deadline): ' + (data.deadline || '') + '\n\n';
+            template += '5. ESTIMACIÓN\n';
+            template += '-------------\n';
+            template += 'Requiere Estimación: Sí\n\n';
+            template += 'Estimación de Esfuerzo (a completar por Factoría):\n';
+            template += '- Progresión Funcional: ___ horas\n';
+            template += '- Regresión Manual: ___ horas\n';
+            template += '- Regresión Automatizada: ___ horas\n';
+            template += '- TOTAL: ___ horas\n\n';
+            template += '6. APROBACIÓN\n';
+            template += '-------------\n';
+            template += 'Responsable de Presupuesto: ' + (data.budgetOwner || '') + '\n';
+            template += 'Estado de Aprobación: Pendiente\n';
+            template += 'Fecha de Aprobación: ___________\n';
+            template += 'Aprobado por: ___________\n\n';
+            template += '7. OBSERVACIONES Y COMENTARIOS\n';
+            template += '-------------------------------\n';
+            template += (data.comments || '') + '\n\n';
+            template += '8. COMPROMISOS\n';
+            template += '--------------\n';
+            template += '□ El solicitante se compromete a proporcionar la documentación necesaria\n';
+            template += '□ El solicitante acepta los plazos estimados por la factoría\n';
+            template += '□ En caso de cancelación, se pagarán los trabajos realizados hasta la fecha\n';
+            template += '□ La demanda no comenzará sin aprobación formal del responsable de presupuesto\n\n';
+            template += '========================================================\n';
+            template += 'Fecha de generación: ' + today;
+
+            var blob = new Blob([template], { type: 'text/plain;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'Peticion_Demanda_' + (data.requestId || 'Nueva') + '_' + Date.now() + '.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('¡Plantilla exportada correctamente!');
+        }
+
+        function clearForm() {
+            if (confirm('¿Estás seguro de que quieres limpiar el formulario?')) {
+                document.getElementById('requestForm').reset();
+                document.getElementById('requestDate').valueAsDate = new Date();
+            }
+        }
+    </script>
+</body>
+</html>
