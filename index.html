@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,6 +257,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -265,7 +267,7 @@
 
         <div class="content">
             <form id="requestForm">
-                
+
                 <div class="section">
                     <div class="section-header">
                         <h2>1. Información General</h2>
@@ -273,29 +275,31 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="requestId">ID de Petición (opcional)</label>
-                            <input type="text" id="requestId" name="requestId" placeholder="Se generará automáticamente">
+                            <input type="text" id="requestId" name="requestId"
+                                placeholder="Se generará automáticamente">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="requestDate" class="required">Fecha de Petición</label>
                             <input type="date" id="requestDate" name="requestDate" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="requestor" class="required">Solicitante</label>
                             <input type="text" id="requestor" name="requestor" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="department" class="required">Departamento</label>
                             <input type="text" id="department" name="department" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="project" class="required">Proyecto</label>
-                            <input type="text" id="project" name="project" placeholder="ej: APP Mobile, E-commerce" required>
+                            <input type="text" id="project" name="project" placeholder="ej: APP Mobile, E-commerce"
+                                required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="priority" class="required">Prioridad</label>
                             <select id="priority" name="priority" required>
@@ -326,25 +330,29 @@
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="title" class="required">Título de la Demanda</label>
-                            <input type="text" id="title" name="title" placeholder="Título breve y descriptivo" required>
+                            <input type="text" id="title" name="title" placeholder="Título breve y descriptivo"
+                                required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="description" class="required">Descripción Detallada</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Describe en detalle qué se necesita..." required></textarea>
+                            <textarea id="description" name="description" rows="4"
+                                placeholder="Describe en detalle qué se necesita..." required></textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="objectives" class="required">Objetivos</label>
-                            <textarea id="objectives" name="objectives" rows="3" placeholder="¿Qué se espera conseguir con esta demanda?" required></textarea>
+                            <textarea id="objectives" name="objectives" rows="3"
+                                placeholder="¿Qué se espera conseguir con esta demanda?" required></textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="scope" class="required">Alcance</label>
-                            <textarea id="scope" name="scope" rows="3" placeholder="Define qué está incluido y qué no..." required></textarea>
+                            <textarea id="scope" name="scope" rows="3"
+                                placeholder="Define qué está incluido y qué no..." required></textarea>
                         </div>
                     </div>
                 </div>
@@ -356,7 +364,8 @@
                     <div class="form-grid" style="grid-template-columns: 1fr;">
                         <div class="form-group">
                             <label for="affectedAreas" class="required">Áreas/Módulos Afectados</label>
-                            <input type="text" id="affectedAreas" name="affectedAreas" placeholder="ej: Login, Carrito, Checkout, API Pedidos" required>
+                            <input type="text" id="affectedAreas" name="affectedAreas"
+                                placeholder="ej: Login, Carrito, Checkout, API Pedidos" required>
                         </div>
                         <div class="form-group">
                             <label class="required">Tipos de Testing Requeridos</label>
@@ -395,7 +404,7 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="environment" class="required">Entorno</label>
                             <select id="environment" name="environment" required>
@@ -406,100 +415,158 @@
                                 <option value="Producción">Producción</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="documentation">Documentación Adjunta</label>
-                            <input type="text" id="documentation" name="documentation" placeholder="Links a Confluence, Jira, Drive, etc.">
+                            <input type="text" id="documentation" name="documentation"
+                                placeholder="Links a Confluence, Jira, Drive, etc.">
                         </div>
-                    </div>
-                </div>
 
-                <div class="section">
-                    <div class="section-header">
-                        <h2>4. Planificación</h2>
-                    </div>
-                    <div class="form-grid">
                         <div class="form-group">
-                            <label for="expectedStartDate" class="required">Fecha Inicio Esperada</label>
-                            <input type="date" id="expectedStartDate" name="expectedStartDate" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="expectedEndDate">Fecha Fin Esperada</label>
-                            <input type="date" id="expectedEndDate" name="expectedEndDate">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="deadline" class="required">Deadline</label>
-                            <input type="date" id="deadline" name="deadline" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <h2>5. Aprobación y Presupuesto</h2>
-                    </div>
-                    <div class="form-grid" style="grid-template-columns: 1fr;">
-                        <div class="form-group">
-                            <label for="budgetOwner" class="required">Responsable de Presupuesto</label>
-                            <input type="text" id="budgetOwner" name="budgetOwner" placeholder="Persona que autorizará la demanda" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="qalead" class="required">QA Lead</label>
-                            <select id="qalead" name="qalead" required>
-                                <option value="">Seleccionar...</option>
-                                <option value="Lead1">Ecommerce - Lead1</option>
-                                <option value="Lead2">RRHH - Lead2</option>
-                                <option value="Lead3">Marketing - Lead3</option>
-                                <option value="Lead4">Finanzas - Lead4</option>
+                            <!-- Origen de los datos -->
+                            <label for="origenDatos">Origen de los datos:</label>
+                            <select id="origenDatos" name="origenDatos">
+                                <option value="cliente">Facilitados por el cliente</option>
+                                <option value="proveedor">Generados por el proveedor</option>
+                                <option value="mixtos">Mixtos</option>
                             </select>
                         </div>
-                        
-                        <div class="info-box">
-                            <strong>Nota:</strong> La estimación de esfuerzo será completada por la Factoría e incluirá:
-                            <ul>
-                                <li>Automatización (horas)</li>
-                                <li>Preparación de entorno (horas)</li>
-                                <li>Regresión Manual (horas)</li>
-                                <li>Regresión Automatizada (horas)</li>
-                                <li>Testing Funcional (horas)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                </div>
 
-                <div class="section">
-                    <div class="section-header">
-                        <h2>6. Observaciones y Comentarios</h2>
-                    </div>
-                    <div class="form-grid" style="grid-template-columns: 1fr;">
                         <div class="form-group">
-                            <textarea id="comments" name="comments" rows="4" placeholder="Cualquier información adicional relevante..."></textarea>
+                            <!-- Tipo de datos -->
+                            <label for="tipoDatos">Tipo de datos requeridos:</label>
+                            <select id="tipoDatos" name="tipoDatos[]" multiple>
+                                <option value="anonimizados">Datos reales anonimizados</option>
+                                <option value="sinteticos">Datos sintéticos</option>
+                                <option value="logs">Logs de sistema</option>
+                                <option value="casos">Casos de prueba</option>
+                                <option value="documentacion">Documentación asociada</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Descripción -->
+                            <label for="descripcionDatos">Detalles adicionales:</label>
+                            <textarea id="descripcionDatos" name="descripcionDatos"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Disponibilidad -->
+                            <label for="fechaDatos">Disponibilidad de los datos:</label>
+                            <input type="date" id="fechaDatos" name="fechaDatos">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Archivo de ejemplo -->
+                            <label for="archivoDatos">Adjuntar datos de ejemplo:</label>
+                            <input type="file" id="archivoDatos" name="archivoDatos">
                         </div>
                     </div>
                 </div>
-
-                <div class="section">
-                    <div class="commitments-box">
-                        <h3>Compromisos</h3>
-                        <ul>
-                            <li>El solicitante se compromete a proporcionar la documentación necesaria</li>
-                            <li>El solicitante acepta los plazos estimados por la Factoría</li>
-                            <li>En caso de cancelación, se pagarán los trabajos realizados hasta la fecha</li>
-                            <li>La demanda no comenzará sin aprobación formal del responsable de presupuesto</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button type="button" class="btn btn-primary" onclick="exportTemplate()">Exportar Plantilla</button>
-                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpiar</button>
-                </div>
-            </form>
         </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>4. Planificación</h2>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <!-- Fecha estimada de entrega -->
+                    <label for="fechaEntrega">Fecha estimada de entrega (Desarrollo):</label>
+                    <input type="date" id="fechaEntrega" name="fechaEntrega" required>
+                </div>
+                <div class="form-group">
+                    <label for="expectedStartDate" class="required">Fecha Inicio Esperada Factoria</label>
+                    <input type="date" id="expectedStartDate" name="expectedStartDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expectedEndDate">Fecha Fin Esperada Factoría</label>
+                    <input type="date" id="expectedEndDate" name="expectedEndDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="deadline" class="required">Deadline Factoria</label>
+                    <input type="date" id="deadline" name="deadline" required>
+                </div>
+                <div class="form-group">
+                    <!-- Estimación de esfuerzo de Factoría -->
+                    <label for="horasEsfuerzo">Estimación de esfuerzo Factoria (Horas):</label>
+                    <input type="number" id="horasEsfuerzo" name="horasEsfuerzo" min="1" step="1" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>5. Aprobación y Presupuesto</h2>
+            </div>
+            <div class="form-grid" style="grid-template-columns: 1fr;">
+                <div class="form-group">
+                    <label for="budgetOwner" class="required">Responsable de Presupuesto</label>
+                    <input type="text" id="budgetOwner" name="budgetOwner"
+                        placeholder="Persona que autorizará la demanda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="qalead" class="required">QA Lead</label>
+                    <select id="qalead" name="qalead" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Lead1">Ecommerce - Lead1</option>
+                        <option value="Lead2">RRHH - Lead2</option>
+                        <option value="Lead3">Marketing - Lead3</option>
+                        <option value="Lead4">Finanzas - Lead4</option>
+                    </select>
+                </div>
+
+                <div class="info-box">
+                    <strong>Nota:</strong> La estimación de esfuerzo será completada por la Factoría e incluirá:
+                    <ul>
+                        <li>Automatización (horas)</li>
+                        <li>Preparación de entorno (horas)</li>
+                        <li>Regresión Manual (horas)</li>
+                        <li>Regresión Automatizada (horas)</li>
+                        <li>Testing Compatibilidad si fuera necesario (horas)</li>
+                        <li>Testing Exploratorio (horas)</li>
+                        <li>Testing Funcional (horas)</li>
+                        <li>Testing Rendimiento si fuera necesario (horas)</li>
+                        <li>Testing Seguridad si fuera necesario (horas)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>6. Observaciones y Comentarios</h2>
+            </div>
+            <div class="form-grid" style="grid-template-columns: 1fr;">
+                <div class="form-group">
+                    <textarea id="comments" name="comments" rows="4"
+                        placeholder="Cualquier información adicional relevante..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="commitments-box">
+                <h3>Compromisos</h3>
+                <ul>
+                    <li>El solicitante se compromete a proporcionar la documentación necesaria</li>
+                    <li>El solicitante acepta los plazos estimados por la Factoría</li>
+                    <li>En caso de cancelación, se pagarán los trabajos realizados hasta la fecha</li>
+                    <li>La demanda no comenzará sin aprobación formal del responsable de presupuesto</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="btn btn-primary" onclick="exportTemplate()">Exportar Plantilla</button>
+            <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpiar</button>
+        </div>
+        </form>
+    </div>
     </div>
 
     <script>
@@ -509,7 +576,7 @@
             var form = document.getElementById('requestForm');
             var formData = new FormData(form);
             var data = {};
-            
+
             for (var pair of formData.entries()) {
                 var key = pair[0];
                 var value = pair[1];
@@ -520,16 +587,16 @@
                     data[key] = value;
                 }
             }
-            
+
             if (!data.testingType) data.testingType = [];
-            
+
             return data;
         }
 
         function exportTemplate() {
             var data = getFormData();
             var today = new Date().toLocaleString('es-ES');
-            
+
             var template = 'PLANTILLA DE PETICIÓN DE DEMANDA - FACTORÍA DE CALIDAD\n';
             template += '========================================================\n\n';
             template += '1. INFORMACIÓN GENERAL\n';
@@ -593,7 +660,7 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            
+
             alert('¡Plantilla exportada correctamente!');
         }
 
@@ -605,4 +672,5 @@
         }
     </script>
 </body>
+
 </html>
